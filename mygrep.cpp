@@ -21,7 +21,7 @@ enum Case {
 };
 
 // Funktion prototype
-void string_haku(string isoString, string pieniString, int& num);
+void stringHaku(string isoString, string pieniString, int& num);
 void readFile(string tekstiString, string linkkiString, string riviNum, int argc, Case& output, vector<float>& koko);
 string lowerCase(string str);
 
@@ -42,21 +42,20 @@ int main (int argc, char *argv[]) {
     readFile(tekstiString, linkkiString, riviNum, argc, output, koko);
   } else {
     cout << "1.Inkrementti: " << endl;
+    
     cout << "Give a string from which to search for: ";
     getline(cin, isoString);
     cout << endl;
-  
+
     cout << "Give search string: ";
     getline(cin, pieniString);
     cout << endl;
 
-    string_haku(isoString, pieniString, num);
-  }
-  // else {
-  //   cout << "Run the program again with a search string in the CMD" << endl;
-  //   return 1;
-  // }
+    stringHaku(isoString, pieniString, num);
+    
+  };
 
+  return 0;
 }
 
 
@@ -68,7 +67,7 @@ string lowerCase(string str) {
 }
 
 // 1. Inkrementti
-void string_haku(string isoString, string pieniString, int& num) {
+void stringHaku(string isoString, string pieniString, int& num) {
   num = isoString.find(pieniString);
   if(num != string::npos) {
    cout << "'" << pieniString << "' found in '" << isoString << "' in position " << num << endl;
@@ -82,7 +81,7 @@ void readFile(string tekstiString, string linkkiString, string riviNum, int argc
   try {
     const string txtFile = "/Users/nerdylab/oep/mygrep/" + linkkiString;
     string line;
-    int lineNumero = 0, totalLineNumero = 0;
+    int lineNumero = 0;
     bool found = false;
     ifstream readFile(txtFile);
 
@@ -110,6 +109,7 @@ void readFile(string tekstiString, string linkkiString, string riviNum, int argc
         if(riviNum == "-olo") {
           output = RIVIMOLEMMAT;
         }
+        cout << "4.Inkrementti: " << endl;
         if(riviNum == "-or") {
           output = REVERSEHAKU;
         }
